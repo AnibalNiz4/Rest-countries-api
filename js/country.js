@@ -18,6 +18,9 @@ const container = document.querySelector('.container');
 const back_arrow = document.querySelector('.back_arrow');
 
 //dark or light page
+if(!localStorage.getItem('darkMode')){
+    localStorage.setItem("darkMode", "dark_mode");    
+}
 const toggleMode = localStorage.getItem("darkMode");
 
 if(toggleMode == "light_mode"){
@@ -58,7 +61,7 @@ dark_mode.addEventListener('click', () =>{
 let dom = window.location.search;
 let cod = dom.slice(1);
 
-fetch('https://restcountries.eu/rest/v2/all')
+fetch('https://restcountries.com/v2/all')
 .then(res => res.json())
 .then(data => {
     if (data.code === 422) {

@@ -22,6 +22,9 @@ const bkg_nav = document.querySelector('.bkg_nav');
 const container = document.querySelector('.container');
 
 //dark or light page
+if(!localStorage.getItem('darkMode')){
+    localStorage.setItem("darkMode", "dark_mode");    
+}
 const toggleMode = localStorage.getItem("darkMode");
 
 if(toggleMode == "light_mode"){
@@ -68,11 +71,12 @@ arrow_filter.addEventListener('click', () =>{
     }
 });
 
-fetch('https://restcountries.eu/rest/v2/all')
+//fetch('https://restcountries.eu/rest/v2/all')
+fetch('https://restcountries.com/v2/all')
 .then(res => res.json())
 .then(data => {
     if (data.code === 422) {
-        alert('no anda we') 
+        alert('Oops, al parecer hubo un error!!!') 
     }
     else{
         for(let i = 0; i<data.length; i++){
